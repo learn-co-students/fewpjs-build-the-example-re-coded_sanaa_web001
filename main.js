@@ -4,6 +4,15 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+let glyphStates = {
+  "♡": "♥",
+  "♥": "♡"
+};
+
+let colorStates = {
+  "red" : "",
+  "": "red"
+};
 
 
 
