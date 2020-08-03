@@ -3,7 +3,48 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+window.addEventListener("DOMContentLoaded",function(){
+  // alert("hello");
+  //  document.getElementById("modal").classList.add("hidden");
+});
 
+var glyphStates = {
+  "♡": "♥",
+  "♥": "♡"
+};
+
+var colorStates = {
+  "red" : "",
+  "": "red"
+};
+
+var articleHearts = document.querySelectorAll(".like");
+
+
+function likeHandler(e) {
+  var heart = e.target;
+  mimicServerCall()
+    .then(function(msg){
+      console.log(msg);
+        // alert(heart.innerText)
+      
+        if(heart.innerText.split(" ")[1] == EMPTY_HEART)
+       heart.innerText = "Unlike! "+ glyphStates[heart.innerText.split(" ")[1]];
+       else
+       heart.innerText = "Like! "+ glyphStates[heart.innerText.split(" ")[1]];
+     
+       heart.style.color = colorStates[heart.style.color];
+       
+    })
+    .catch(function(errorMsg) {
+      alert(errorMsg);
+      document.getElementById("modal").classList.remove("hidden");
+    });
+}
+
+for (var glyph of articleHearts) {
+  glyph.addEventListener("click", likeHandler);
+}
 
 
 
