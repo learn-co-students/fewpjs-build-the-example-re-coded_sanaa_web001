@@ -3,7 +3,20 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+  let modal = document.querySelector('.hidden')
 
+let likes = document.querySelectorAll('.like');
+console.log(likes);
+likes.forEach( e => {
+  e.addEventListener('click' , e => {
+    console.log('click');
+    mimicServerCall()
+  })
+})
+  // if(modal === null) {
+  //   modal.className = ' hidden'
+  // }
+  //
 
 
 
@@ -16,6 +29,7 @@ function mimicServerCall(url="http://mimicServer.example.com", config={}) {
     setTimeout(function() {
       let isRandomFailure = Math.random() < .2
       if (isRandomFailure) {
+        modal.className = '';
         reject("Random server error. Try again.");
       } else {
         resolve("Pretend remote server notified of action!");
