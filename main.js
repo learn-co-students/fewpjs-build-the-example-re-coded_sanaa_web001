@@ -3,7 +3,22 @@ const EMPTY_HEART = '♡'
 const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
+let hearts = document.querySelectorAll("span.like-glyph");
+const likeHeart = (e) => {
+  let heart = e.target;
 
+  mimicServerCall("bogusUrl")
+ .then(serverMessage => {
+   heart.innerHTML === EMPTY_HEART ? heart.innerHTML = FULL_HEART : heart.innerHTML = EMPTY_HEART
+   heart.innerHTML === FULL_HEART ?  heart.style.color='red' : heart.style.color=''
+ })
+ .catch( error => {
+    document.getElementById("modal").className = "";
+  });
+}
+hearts.forEach(h =>{
+  h.addEventListener("click",likeHeart)
+});
 
 
 
